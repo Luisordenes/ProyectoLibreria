@@ -2,7 +2,7 @@
 @section('title', 'Stock Categoria')
 @section('header')
     <hr>
-    <h2>Stock por categoria</h2>
+    <h2>Stock de categoria: "{{ $categoria[0]->nombre }}"</h2>
     <hr>
 @stop
 

@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Biblioteca - @yield('title')</title>
+    <title>Libreria - @yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   </head>
   <body>
 
-    <div class="container">
+    <div class="container-fluid" >
         <nav class="navbar navbar-expand-lg bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="/libro/ultimos">Inicio</a>
+            <a class="navbar-brand" href="/libro/ultimos">Principal</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,7 +27,6 @@
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Stock</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/stock/agregar">Agregar Stock</a></li>
                   <li><a class="dropdown-item" href="/stock/listar/{{1}}">Stocks Estantes</a></li>
                   <li><a class="dropdown-item" href="/stock/listar/{{2}}">Stocks Bodega</a></li>
                 </ul>
@@ -42,22 +41,20 @@
 
         </nav>
         <div>
-
           @section('header')
-            <div class="container">
-              <hr>
-              <h2>Pagina principal</h2>
-              <hr>
-              <br>
-            </div>
-        
           @show
-
-
           @yield('content')
         </div>
 
         @section('footer')
+          <div class="container">
+            <div class="text-center">
+              <hr><h2>Libreria Fairy Tail</h2>
+              <p class="lead">
+                Sistema de control de stocks.
+              </p><hr>
+              </div>
+          </div>
         @show
     </div>
 

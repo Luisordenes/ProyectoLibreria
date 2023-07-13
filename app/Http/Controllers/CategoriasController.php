@@ -23,7 +23,7 @@ class CategoriasController extends Controller
         $categoria->nombre = $request->nombre;
         $categoria->save();
 
-        $categorias = Categoria::get();
+        $categorias = Categoria::orderBy('nombre','ASC')->get();
 
         return view('Categoria.listar-categoria',[
             'categorias' => $categorias
@@ -31,7 +31,7 @@ class CategoriasController extends Controller
     }
 
     public function listarCategoria(){
-        $categorias = Categoria::get();
+        $categorias = Categoria::orderBy('nombre','ASC')->get();
 
         return view('Categoria.listar-categoria',[
             'categorias' => $categorias
@@ -56,7 +56,7 @@ class CategoriasController extends Controller
         $categoria->nombre = $request->nombre;
         $categoria->save();
 
-        $categorias = Categoria::get();
+        $categorias = Categoria::orderBy('nombre','ASC')->get();
 
         return view('Categoria.listar-categoria',[
             'categorias' => $categorias
@@ -89,7 +89,7 @@ class CategoriasController extends Controller
         $categoria = Categoria::findOrFail($id);
         $categoria->delete();
 
-        $categorias = Categoria::get();
+        $categorias = Categoria::orderBy('nombre','ASC')->get();
 
         return view('Categoria.listar-categoria',[
             'categorias' => $categorias
@@ -98,7 +98,7 @@ class CategoriasController extends Controller
 
     public function stockCategoria($id){
         $ubicaciones = Ubicacion::get();
-        $stocks = Stock::get();
+        $stocks = Stock::orderBy('libro_id','ASC')->get();
         $libros = Libro::where('categoria_id', $id)->get();
         $categoria = Categoria::where('id', $id)->get();
         

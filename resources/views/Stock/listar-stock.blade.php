@@ -16,9 +16,7 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Ubicación</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Editar</th>
-                
+                <th scope="col">Cantidad</th> 
             </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -42,7 +40,6 @@
                                 @endif
                             @endforeach   
                             <td>{{ $stock->cantidad }}</td>
-                            <td><a type="button" class="btn btn-secondary" href="/stock/editando/{{ $stock->id }}">&#9998;</a></td>
                         </tr>
             @endforeach
         </tbody>

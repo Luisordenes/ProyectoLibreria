@@ -14,11 +14,13 @@
 
         <div class="mb-4">
             <label for="libro">Libro: </label>
+            <select class="form-select" id="libro" name="libro" disabled>
                 @foreach($libros as $libro)
                     @if($stock[0]->libro_id == $libro->id)
-                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $libro->nombre }}" disabled>
+                        <option selected value="{{ $libro->id }}">{{ $libro->nombre }}</option>
                     @endif    
                 @endforeach
+            </select>
         </div>
 
         <div class="mb-4">

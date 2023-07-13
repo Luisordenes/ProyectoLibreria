@@ -44,7 +44,7 @@ class LibrosController extends Controller
         $libro->categoria_id = $request->categoria;
         $libro->save();
 
-        $libros = Libro::get();
+        $libros = Libro::orderBy('nombre','ASC')->get();
         $categorias = Categoria::get();
         
         return view('Libro.listar-libros',[
@@ -59,7 +59,7 @@ class LibrosController extends Controller
     }
 
     public function listarLibros(){
-        $libros = Libro::get();
+        $libros = Libro::orderBy('nombre','ASC')->get();
         $categorias = Categoria::get();
         
         return view('Libro.listar-libros',[
@@ -70,7 +70,7 @@ class LibrosController extends Controller
 
     public function listarUltimosLibros(){
         $libros = Libro::latest()
-        ->take(5)
+        ->take(12)
         ->get();
         $categorias = Categoria::get();
         
@@ -130,7 +130,7 @@ class LibrosController extends Controller
             $libro->save();
         }
 
-        $libros = Libro::get();
+        $libros = Libro::orderBy('nombre','ASC')->get();
         $categorias = Categoria::get();
         
         return view('Libro.listar-libros',[

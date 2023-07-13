@@ -2,21 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('/layouts/master');
 });
-
 
 Route::get('/libro/agregar', 'LibrosController@agregarLibro');
 Route::post('/libro/grabar', 'LibrosController@grabarLibro');
@@ -38,8 +26,8 @@ Route::get('/categoria/mensaje/{id}', 'CategoriasController@mensajeCategoria');
 Route::get('/categoria/eliminar/{id}', 'CategoriasController@eliminarCategoria');
 Route::get('/categoria/stock/{id}', 'CategoriasController@stockCategoria');
 
-Route::get('/stock/agregar', 'StockController@agregarStock');
-Route::post('/stock/grabar', 'StockController@grabarStock');
+Route::get('/stock/agregar/{id}', 'StockController@agregarStock');
+Route::post('/stock/grabar/{id}', 'StockController@grabarStock');
 Route::get('/stock/listar/{id}', 'StockController@listarStock');
 Route::get('/stock/editar', 'StockController@editarStock');
 Route::get('/stock/editando/{id}', 'StockController@editandoStock');

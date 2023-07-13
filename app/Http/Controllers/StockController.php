@@ -10,25 +10,24 @@ use App\Models\Categoria;
 
 class StockController extends Controller
 {
-    public function agregarStock(){
-        $libros = Libro::get();
+    public function agregarStock($id){
+        $libro = Libro::where('id', $id)->get();
         $ubicaciones = Ubicacion::get();
 
         return view('Stock.agregar-stock',[            
-            'libros' => $libros,
+            'libro' => $libro,
             'ubicaciones' => $ubicaciones
         ]);
     }
 
-    public function grabarStock(Request $request){
+    public function grabarStock(Request $request, $id){
         $this->validate($request,[
-            'libro' => 'required',
             'ubicacion' => 'required',
             'cantidad' => 'required'
         ]);
 
         $stock = new Stock();
-        $stock->libro_id = $request->libro;
+        $stock->libro_id = $id;
         $stock->ubicacion_id = $request->ubicacion;
         $stock->cantidad = $request->cantidad;
 
@@ -36,20 +35,20 @@ class StockController extends Controller
 
         $ubicaciones = Ubicacion::get();
         $stocks = Stock::get();
-        $libros = Libro::get();
+        $libro = Libro::where('id', $id)->get();
         $categorias = Categoria::get();
-        
-        return view('Stock.listar-stock',[
+
+        return view('Libro.stock-libro',[
             'stocks' => $stocks,
             'ubicaciones' => $ubicaciones,
-            'libros' => $libros,
+            'libro' => $libro,
             'categorias' => $categorias
         ]);
     }
 
     public function listarStock($id){
         $ubicaciones = Ubicacion::get();
-        $stocks = Stock::where('ubicacion_id', $id)->get();
+        $stocks = Stock::where('ubicacion_id', $id)->orderBy('libro_id','ASC')->get();
         $libros = Libro::get();
         $categorias = Categoria::get();
         
@@ -97,14 +96,10 @@ class StockController extends Controller
         $stock->cantidad = $request->cantidad;
         $stock->save();
 
-        $ubicaciones = Ubicacion::get();
-        $stocks = Stock::get();
-        $libros = Libro::get();
+        $libros = Libro::orderBy('nombre','ASC')->get();
         $categorias = Categoria::get();
         
-        return view('Stock.listar-stock',[
-            'stocks' => $stocks,
-            'ubicaciones' => $ubicaciones,
+        return view('Libro.listar-libros',[
             'libros' => $libros,
             'categorias' => $categorias
         ]);
@@ -114,7 +109,7 @@ class StockController extends Controller
         $stock = Stock::where('id', $id)->get();
 
         return view('/Stock/mensaje-stock',[
-            'stock' => $stock,
+            'stock' => $stock
         ]);
     }
 
@@ -122,14 +117,10 @@ class StockController extends Controller
         $stock = Stock::findOrFail($id);
         $stock->delete();
 
-        $ubicaciones = Ubicacion::get();
-        $stocks = Stock::get();
-        $libros = Libro::get();
+        $libros = Libro::orderBy('nombre','ASC')->get();
         $categorias = Categoria::get();
         
-        return view('Stock.listar-stock',[
-            'stocks' => $stocks,
-            'ubicaciones' => $ubicaciones,
+        return view('Libro.listar-libros',[
             'libros' => $libros,
             'categorias' => $categorias
         ]);

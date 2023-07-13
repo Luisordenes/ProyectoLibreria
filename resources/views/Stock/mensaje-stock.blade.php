@@ -12,7 +12,7 @@
     </div>
     <div class="btn-group btn-group-lg" role="group">
         <a href="/stock/eliminar/{{ $stock[0]->id }}" type="button" class="btn btn-warning">SI</a>
-        <a href="/stock/listar" type="button" class="btn btn-secondary">NO</a>
+        <a href="/libro/listar" type="button" class="btn btn-secondary">NO</a>
     </div>
 @stop
 

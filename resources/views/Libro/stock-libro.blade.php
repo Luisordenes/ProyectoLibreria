@@ -2,7 +2,9 @@
 @section('title', 'Listado stock')
 @section('header')
     <hr>
-    <h2>Stock de {{ $libro[0]->nombre }}</h2>
+    <h2>Stock de: "{{ $libro[0]->nombre }}"</h2>
+    <hr>
+    <a href="/stock/agregar/{{ $libro[0]->id }}" type="button" class="btn btn-primary">Agregar Stock</a><br>
     <hr>
 @stop
 
@@ -17,6 +19,7 @@
                 <th scope="col">Ubicación</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Editar</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -37,6 +40,7 @@
                         @endforeach
                         <td>{{ $stock->cantidad }}</td>
                         <td>{{ $libro[0]->precio }}</td>
+                        <td><a type="button" class="btn btn-secondary" href="/stock/editando/{{ $stock->id }}">&#9998;</a></td>
                     </tr>            
                 @endif   
             @endforeach                           
